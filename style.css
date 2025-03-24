@@ -1,1 +1,31 @@
-/* Add styles here */
+
+    /* Add these to your existing styles */
+    .project-slider {
+        position: relative;
+        margin: 0 auto;
+        max-width: 800px;
+    }
+    
+    .project-slides {
+        overflow: hidden;
+    }
+    
+    .project-slide-wrapper {
+        display: flex;
+        transition: transform 0.5s ease;
+    }
+    
+    .project-slide {
+        width: 100%;
+        flex-shrink: 0;
+        padding: 0 10px;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        #prev-project, #next-project {
+            padding: 8px;
+            margin-left: 0;
+            margin-right: 0;
+        }
+    }

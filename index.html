@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Developer Portfolio</title>
+    <title>Fadel MuhamadRifai - Developer Portfolio</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.css">
+    <link rel="stylesheet" href="style.css">
     <style>
         .gradient-bg {
             background: linear-gradient(135deg, #ff2d20 0%, #ff8063 100%);
@@ -23,60 +25,70 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
-        #app {
-            scroll-behavior: smooth;
-        }
         .section {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s ease;
+            position: relative;
+            overflow: hidden;
         }
-        .section.active {
-            opacity: 1;
-            transform: translateY(0);
+        .content-wrapper {
+            max-height: 100vh;
+            overflow-y: auto;
+            padding-top: 80px; /* For fixed navbar */
+            padding-bottom: 2rem;
+            scrollbar-width: none; /* Firefox */
+        }
+        .content-wrapper::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Edge */
+        }
+        #fp-nav ul li a span, 
+        .fp-slidesNav ul li a span {
+            background: #ff2d20;
+        }
+        .fp-watermark {
+            display: none !important;
         }
     </style>
 </head>
-<body class="bg-gray-100 font-sans">
-    <div id="app">
-        <!-- Navigation -->
-        <nav class="fixed w-full z-10 bg-white shadow-md">
-            <div class="container mx-auto px-4 py-2">
-                <div class="flex justify-between items-center">
-                    <a href="https://github.com/laradelfa" class="text-2xl font-bold gradient-text">
-                        <span class="text-red-600">Laradel</span>Fa
-                    </a>
-                    <div class="hidden md:flex space-x-8">
-                        <a href="#home" class="nav-link text-gray-600 hover:text-red-600">Beranda</a>
-                        <a href="#about" class="nav-link text-gray-600 hover:text-red-600">Tentang Saya</a>
-                        <a href="#projects" class="nav-link text-gray-600 hover:text-red-600">Proyek</a>
-                        <a href="#skills" class="nav-link text-gray-600 hover:text-red-600">Skill</a>
-                        <a href="#contact" class="nav-link text-gray-600 hover:text-red-600">Hubungi Saya</a>
-                    </div>
-                    <div class="md:hidden">
-                        <button id="menu-toggle" class="text-gray-600 hover:text-red-600">
-                            <i class="fas fa-bars text-xl"></i>
-                        </button>
-                    </div>
+<body class="font-sans">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white shadow-md">
+        <div class="container mx-auto px-4 py-2">
+            <div class="flex justify-between items-center">
+                <a href="https://github.com/laradelfa" class="text-2xl font-bold gradient-text">
+                    <span class="text-red-600">Laradel</span>Fa
+                </a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-gray-600 hover:text-red-600">Beranda</a>
+                    <a href="#about" class="nav-link text-gray-600 hover:text-red-600">Tentang Saya</a>
+                    <a href="#projects" class="nav-link text-gray-600 hover:text-red-600">Proyek</a>
+                    <a href="#skills" class="nav-link text-gray-600 hover:text-red-600">Skill</a>
+                    <a href="#contact" class="nav-link text-gray-600 hover:text-red-600">Hubungi Saya</a>
                 </div>
-                <!-- Mobile Menu -->
-                <div id="mobile-menu" class="md:hidden hidden py-4 space-y-3">
-                    <a href="#home" class="block text-gray-600 hover:text-red-600">Beranda</a>
-                    <a href="#about" class="block text-gray-600 hover:text-red-600">Tentang Saya</a>
-                    <a href="#projects" class="block text-gray-600 hover:text-red-600">Proyek</a>
-                    <a href="#skills" class="block text-gray-600 hover:text-red-600">Skill</a>
-                    <a href="#contact" class="block text-gray-600 hover:text-red-600">Hubungi Saya</a>
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-gray-600 hover:text-red-600">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
                 </div>
             </div>
-        </nav>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden py-4 space-y-3">
+                <a href="#home" class="block text-gray-600 hover:text-red-600">Beranda</a>
+                <a href="#about" class="block text-gray-600 hover:text-red-600">Tentang Saya</a>
+                <a href="#projects" class="block text-gray-600 hover:text-red-600">Proyek</a>
+                <a href="#skills" class="block text-gray-600 hover:text-red-600">Skill</a>
+                <a href="#contact" class="block text-gray-600 hover:text-red-600">Hubungi Saya</a>
+            </div>
+        </div>
+    </nav>
 
-        <!-- Hero Section -->
-        <section id="home" class="section pt-24 pb-16 md:pt-32 md:pb-24 gradient-bg text-white">
-            <div class="container mx-auto px-4">
+    <!-- FullPage.js Container -->
+    <div id="fullpage">
+        <!-- Home Section -->
+        <div class="section gradient-bg" data-anchor="home">
+            <div class="container mx-auto px-4 h-full flex items-center">
                 <div class="flex flex-col md:flex-row items-center">
                     <div class="md:w-1/2 mb-8 md:mb-0">
-                        <h1 class="text-4xl md:text-6xl font-bold mb-4"><span class="text-black">Fadel</span> MuhamadRifai</h1>
-                        <p class="text-xl mb-8">Full Stack Developer, Laravel, Tailwind, Cody dan teknologi lainnya yang membantu produktifitas pemrogramman.</p>
+                        <h1 class="text-4xl md:text-6xl font-bold mb-4 text-white"><span class="text-black">Fadel</span> MuhamadRifai</h1>
+                        <p class="text-xl mb-8 text-white">Full Stack Developer, Laravel, Tailwind, Cody dan teknologi lainnya yang membantu produktifitas pemrogramman.</p>
                         <div class="flex space-x-4">
                             <a href="#projects" class="bg-white text-red-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition duration-300">Lihat Projek Saya</a>
                             <a href="#contact" class="border-2 border-white text-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-red-600 transition duration-300">Hubungi Saya</a>
@@ -87,279 +99,351 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
 
         <!-- About Section -->
-        <section id="about" class="section py-16 bg-white">
-            <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold mb-8 text-center">Tentang Saya</h2>
-                <div class="flex flex-col md:flex-row items-center">
-                    <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
-                        <img src="/api/placeholder/300/400" alt="Profile" class="rounded-lg shadow-lg h-80 object-cover">
-                    </div>
-                    <div class="md:w-2/3 md:pl-12">
-                        <p class="text-lg mb-6">Saya adalah seorang penggemar Laravel dan saat ini sedang dalam proses belajar. Saat ini, saya menempuh pendidikan di Universitas Dian Nusantara, jurusan IT, semester 6. Meskipun saya bekerja sebagai Administrasi di salah satu perusahaan asuransi, pekerjaan ini belum sesuai dengan impian saya. Namun, saya tetap bersyukur memiliki pekerjaan.</p>
-                        <p class="text-lg mb-6">Saya senang mendengar jika Anda sedang mencari seorang programmer. Semoga saya bisa menjadi salah satu kandidat yang Anda cari. Silakan untuk melihat-lihat. </p>
-                        <p class="text-lg mb-6">Terima kasih telah mengunjungi.</p>
-                        <div class="flex space-x-4 mt-8">
-                            <a href="https://github.com/laradelfa" class="text-red-600 hover:text-red-700 text-2xl"><i class="fab fa-github"></i></a>
-                            <a href="https://linkedin.com/faaadelmr" class="text-red-600 hover:text-red-700 text-2xl"><i class="fab fa-linkedin"></i></a>
-                            <a href="https://instagram.com/faaadelmr" class="text-red-600 hover:text-red-700 text-2xl"><i class="fab fa-instagram"></i></a>
+        <div class="section bg-white" data-anchor="about">
+            <div class="content-wrapper">
+                <div class="container mx-auto px-4">
+                    <h2 class="text-3xl font-bold mb-8 text-center">Tentang Saya</h2>
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
+                            <img src="/api/placeholder/300/400" alt="Profile" class="rounded-lg shadow-lg h-80 object-cover">
+                        </div>
+                        <div class="md:w-2/3 md:pl-12">
+                            <p class="text-lg mb-6">Saya adalah seorang penggemar Laravel dan saat ini sedang dalam proses belajar. Saat ini, saya menempuh pendidikan di Universitas Dian Nusantara, jurusan IT, semester 6. Meskipun saya bekerja sebagai Administrasi di salah satu perusahaan asuransi, pekerjaan ini belum sesuai dengan impian saya. Namun, saya tetap bersyukur memiliki pekerjaan.</p>
+                            <p class="text-lg mb-6">Saya senang mendengar jika Anda sedang mencari seorang programmer. Semoga saya bisa menjadi salah satu kandidat yang Anda cari. Silakan untuk melihat-lihat. </p>
+                            <p class="text-lg mb-6">Terima kasih telah mengunjungi.</p>
+                            <div class="flex space-x-4 mt-8">
+                                <a href="https://github.com/laradelfa" class="text-red-600 hover:text-red-700 text-2xl"><i class="fab fa-github"></i></a>
+                                <a href="https://linkedin.com/faaadelmr" class="text-red-600 hover:text-red-700 text-2xl"><i class="fab fa-linkedin"></i></a>
+                                <a href="https://instagram.com/faaadelmr" class="text-red-600 hover:text-red-700 text-2xl"><i class="fab fa-instagram"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- Projects Section -->
-        <section id="projects" class="section py-16 bg-gray-100">
-            <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold mb-8 text-center">Proyek Saya</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Project Tanma -->
-                    <div class="card bg-white rounded-lg overflow-hidden shadow-md">
-                        <img src="https://github.com/laradelfa/tanma/blob/main/public/ss/1.jpg?raw=true" alt="Project Tanma" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-2">Tanma</h3>
-                            <p class="text-gray-600 mb-4">Aplikasi Report yang ada pada pekerjaan saya sekarang, jadi sebelumnya kami melakukan report melalui WA dan Excel. dengan adanya aplikasi ini hanya perlu mengisi di satu tempat. dan juga ada beberapa tambahan app seperti PDFmerge, PDF selected dan juga SplitBill untuk mempermudah pekerjaan.</p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="bg-red-100 text-red-600 text-xs px-2 py-1 rounded">Laravel</span>
-                                <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded">Tailwind</span>
-                                <span class="bg-yellow-100 text-yellow-600 text-xs px-2 py-1 rounded">PDF.js</span>
-                                <span class="bg-green-100 text-green-600 text-xs px-2 py-1 rounded">DaisyUI</span>
+<!-- Projects Section -->
+<div class="section bg-gray-100" data-anchor="projects">
+    <div class="content-wrapper">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-8 text-center">Proyek Saya</h2>
+            
+            <!-- Project Slider Container -->
+            <div class="project-slider relative">
+                <!-- Slides Container -->
+                <div class="project-slides overflow-hidden">
+                    <div class="project-slide-wrapper flex transition-transform duration-300">
+                        <!-- Project Tanma -->
+                        <div class="project-slide w-full flex-shrink-0">
+                            <div class="card bg-white rounded-lg overflow-hidden shadow-md mx-auto max-w-md">
+                                <img src="https://github.com/laradelfa/tanma/blob/main/public/ss/1.jpg?raw=true" alt="Project Tanma" class="w-full h-48 object-cover">
+                                <div class="p-6">
+                                    <h3 class="text-xl font-semibold mb-2">Tanma</h3>
+                                    <p class="text-gray-600 mb-4">Aplikasi Report yang ada pada pekerjaan saya sekarang, jadi sebelumnya kami melakukan report melalui WA dan Excel. dengan adanya aplikasi ini hanya perlu mengisi di satu tempat. dan juga ada beberapa tambahan app seperti PDFmerge, PDF selected dan juga SplitBill untuk mempermudah pekerjaan.</p>
+                                    <div class="flex flex-wrap gap-2 mb-4">
+                                        <span class="bg-red-100 text-red-600 text-xs px-2 py-1 rounded">Laravel</span>
+                                        <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded">Tailwind</span>
+                                        <span class="bg-yellow-100 text-yellow-600 text-xs px-2 py-1 rounded">PDF.js</span>
+                                        <span class="bg-green-100 text-green-600 text-xs px-2 py-1 rounded">DaisyUI</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <a href="https://mentanma.cyou" class="text-red-600 hover:text-red-700 font-medium">Website</a>
+                                        <a href="https://github.com/laradelfa/tanma" class="text-gray-600 hover:text-gray-700 font-medium">GitCode</a>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="flex justify-between">
-                                <a href="https://mentanma.cyou" class="text-red-600 hover:text-red-700 font-medium">Website</a>
-                                <a href="https://github.com/laradelfa/tanma" class="text-gray-600 hover:text-gray-700 font-medium">GitCode</a>
+                        </div>
+                        
+                        <!-- Project 2 (Example) -->
+                        <div class="project-slide w-full flex-shrink-0">
+                            <div class="card bg-white rounded-lg overflow-hidden shadow-md mx-auto max-w-md">
+                                <img src="https://via.placeholder.com/600x300" alt="Project 2" class="w-full h-48 object-cover">
+                                <div class="p-6">
+                                    <h3 class="text-xl font-semibold mb-2">Portfolio Website</h3>
+                                    <p class="text-gray-600 mb-4">Website portfolio personal yang dibuat dengan HTML, Tailwind CSS, dan JavaScript. Menggunakan FullPage.js untuk navigasi halaman yang menarik.</p>
+                                    <div class="flex flex-wrap gap-2 mb-4">
+                                        <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded">HTML</span>
+                                        <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded">Tailwind</span>
+                                        <span class="bg-yellow-100 text-yellow-600 text-xs px-2 py-1 rounded">JavaScript</span>
+                                        <span class="bg-purple-100 text-purple-600 text-xs px-2 py-1 rounded">FullPage.js</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <a href="#" class="text-red-600 hover:text-red-700 font-medium">Website</a>
+                                        <a href="#" class="text-gray-600 hover:text-gray-700 font-medium">GitCode</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Project 3 (Example) -->
+                        <div class="project-slide w-full flex-shrink-0">
+                            <div class="card bg-white rounded-lg overflow-hidden shadow-md mx-auto max-w-md">
+                                <img src="https://via.placeholder.com/600x300" alt="Project 3" class="w-full h-48 object-cover">
+                                <div class="p-6">
+                                    <h3 class="text-xl font-semibold mb-2">E-Commerce Dashboard</h3>
+                                    <p class="text-gray-600 mb-4">Dashboard admin untuk toko online dengan fitur manajemen produk, pesanan, dan analitik penjualan. Dibuat dengan Laravel dan Livewire.</p>
+                                    <div class="flex flex-wrap gap-2 mb-4">
+                                        <span class="bg-red-100 text-red-600 text-xs px-2 py-1 rounded">Laravel</span>
+                                        <span class="bg-purple-100 text-purple-600 text-xs px-2 py-1 rounded">Livewire</span>
+                                        <span class="bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded">Tailwind</span>
+                                        <span class="bg-green-100 text-green-600 text-xs px-2 py-1 rounded">MySQL</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <a href="#" class="text-red-600 hover:text-red-700 font-medium">Website</a>
+                                        <a href="#" class="text-gray-600 hover:text-gray-700 font-medium">GitCode</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                  </div>
-                </section>
+                </div>
+                
+                <!-- Navigation Arrows -->
+                <button id="prev-project" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white text-red-600 p-2 rounded-full shadow-md z-10 focus:outline-none hover:bg-gray-100 -ml-4">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button id="next-project" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white text-red-600 p-2 rounded-full shadow-md z-10 focus:outline-none hover:bg-gray-100 -mr-4">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                
+                <!-- Dots Indicator -->
+                <div class="project-dots flex justify-center mt-6 space-x-2">
+                    <button class="w-3 h-3 rounded-full bg-red-600" data-index="0"></button>
+                    <button class="w-3 h-3 rounded-full bg-gray-300" data-index="1"></button>
+                    <button class="w-3 h-3 rounded-full bg-gray-300" data-index="2"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
         <!-- Skills Section -->
-        <section id="skills" class="section py-16 bg-white">
-            <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold mb-8 text-center">Skill Saya</h2>
-                <p class="text-m font-light mb-8 text-center">Karena kesibukan yang belum sesuai dengan pekerjaan saya maka masih banyak hal yang belum saya coba.</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Backend Skills -->
-                    <div class="card bg-gray-50 p-6 rounded-lg shadow-md">
-                        <div class="text-red-600 text-4xl mb-4">
-                            <i class="fas fa-server"></i>
+        <div class="section bg-white" data-anchor="skills">
+            <div class="content-wrapper">
+                <div class="container mx-auto px-4">
+                    <h2 class="text-3xl font-bold mb-8 text-center">Skill Saya</h2>
+                    <p class="text-m font-light mb-8 text-center">Karena kesibukan yang belum sesuai dengan pekerjaan saya maka masih banyak hal yang belum saya coba.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Backend Skills -->
+                        <div class="card bg-gray-50 p-6 rounded-lg shadow-md">
+                            <div class="text-red-600 text-4xl mb-4">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-4">Backend Development</h3>
+                            <ul class="space-y-2">
+                                <li class="flex items-center">
+                                    <span class="w-32">Laravel</span>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-red-600 h-2 rounded-full" style="width: 95%"></div>
+                                    </div>
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-32">PHP</span>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-red-600 h-2 rounded-full" style="width: 90%"></div>
+                                    </div>
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-32">MySQL</span>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-red-600 h-2 rounded-full" style="width: 85%"></div>
+                                    </div>
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-32">API Design</span>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-red-600 h-2 rounded-full" style="width: 30%"></div>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
-                        <h3 class="text-xl font-semibold mb-4">Backend Development</h3>
-                        <ul class="space-y-2">
-                            <li class="flex items-center">
-                                <span class="w-32">Laravel</span>
-                                <div class="w-full bg-gray-200 rounded-full h-2">
-                                    <div class="bg-red-600 h-2 rounded-full" style="width: 95%"></div>
-                                </div>
-                            </li>
-                            <li class="flex items-center">
-                                <span class="w-32">PHP</span>
-                                <div class="w-full bg-gray-200 rounded-full h-2">
-                                    <div class="bg-red-600 h-2 rounded-full" style="width: 90%"></div>
-                                </div>
-                            </li>
-                            <li class="flex items-center">
-                                <span class="w-32">MySQL</span>
-                                <div class="w-full bg-gray-200 rounded-full h-2">
-                                    <div class="bg-red-600 h-2 rounded-full" style="width: 85%"></div>
-                                </div>
-                            </li>
-                            <li class="flex items-center">
-                                <span class="w-32">API Design</span>
-                                <div class="w-full bg-gray-200 rounded-full h-2">
-                                    <div class="bg-red-600 h-2 rounded-full" style="width: 30%"></div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    <!-- Frontend Skills -->
-                    <div class="card bg-gray-50 p-6 rounded-lg shadow-md">
-                        <div class="text-red-600 text-4xl mb-4">
-                            <i class="fas fa-code"></i>
+                        
+                        <!-- Frontend Skills -->
+                        <div class="card bg-gray-50 p-6 rounded-lg shadow-md">
+                            <div class="text-red-600 text-4xl mb-4">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-4">Frontend Development</h3>
+                            <ul class="space-y-2">
+                                <li class="flex items-center">
+                                    <span class="w-32">Livewire</span>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-red-600 h-2 rounded-full" style="width: 40%"></div>
+                                    </div>
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-32">JavaScript</span>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-red-600 h-2 rounded-full" style="width: 75%"></div>
+                                    </div>
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-32">Tailwind CSS</span>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div
+                                        <div class="bg-red-600 h-2 rounded-full" style="width: 95%"></div>
+                                    </div>
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-32">HTML/CSS</span>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-red-600 h-2 rounded-full" style="width: 90%"></div>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
-                        <h3 class="text-xl font-semibold mb-4">Frontend Development</h3>
-                        <ul class="space-y-2">
-                            <li class="flex items-center">
-                                <span class="w-32">Livewire</span>
-                                <div class="w-full bg-gray-200 rounded-full h-2">
-                                    <div class="bg-red-600 h-2 rounded-full" style="width: 40%"></div>
-                                </div>
-                            </li>
-                            <li class="flex items-center">
-                                <span class="w-32">JavaScript</span>
-                                <div class="w-full bg-gray-200 rounded-full h-2">
-                                    <div class="bg-red-600 h-2 rounded-full" style="width: 75%"></div>
-                                </div>
-                            </li>
-                            <li class="flex items-center">
-                                <span class="w-32">Tailwind CSS</span>
-                                <div class="w-full bg-gray-200 rounded-full h-2">
-                                    <div class="bg-red-600 h-2 rounded-full" style="width: 95%"></div>
-                                </div>
-                            </li>
-                            <li class="flex items-center">
-                                <span class="w-32">HTML/CSS</span>
-                                <div class="w-full bg-gray-200 rounded-full h-2">
-                                    <div class="bg-red-600 h-2 rounded-full" style="width: 90%"></div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    <!-- DevOps Skills -->
-                    <div class="card bg-gray-50 p-6 rounded-lg shadow-md">
-                        <div class="text-red-600 text-4xl mb-4">
-                            <i class="fas fa-cloud"></i>
+                        
+                        <!-- DevOps Skills -->
+                        <div class="card bg-gray-50 p-6 rounded-lg shadow-md">
+                            <div class="text-red-600 text-4xl mb-4">
+                                <i class="fas fa-cloud"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-4">DevOps & Tools</h3>
+                            <ul class="space-y-2">
+                                <li class="flex items-center">
+                                    <span class="w-32">Git</span>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-red-600 h-2 rounded-full" style="width: 80%"></div>
+                                    </div>
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-32">Docker</span>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-red-600 h-2 rounded-full" style="width: 1%"></div>
+                                    </div>
+                                </li>
+                                <li class="flex items-center">
+                                    <span class="w-32">CI/CD</span>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-red-600 h-2 rounded-full" style="width: 1%"></div>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
-                        <h3 class="text-xl font-semibold mb-4">DevOps & Tools</h3>
-                        <ul class="space-y-2">
-                            <li class="flex items-center">
-                                <span class="w-32">Git</span>
-                                <div class="w-full bg-gray-200 rounded-full h-2">
-                                    <div class="bg-red-600 h-2 rounded-full" style="width: 80%"></div>
-                                </div>
-                            </li>
-                            <li class="flex items-center">
-                                <span class="w-32">Docker</span>
-                                <div class="w-full bg-gray-200 rounded-full h-2">
-                                    <div class="bg-red-600 h-2 rounded-full" style="width: 1%"></div>
-                                </div>
-                            </li>
-                            <li class="flex items-center">
-                                <span class="w-32">CI/CD</span>
-                                <div class="w-full bg-gray-200 rounded-full h-2">
-                                    <div class="bg-red-600 h-2 rounded-full" style="width: 1%"></div>
-                                </div>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
 
         <!-- Contact Section -->
-        <section id="contact" class="section py-16 gradient-bg text-white">
-            <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold mb-8 text-center">Menghubungi..</h2>
-                <div class="flex flex-col md:flex-row">
-                    <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
-                        <h3 class="text-xl font-semibold mb-4">Mari berkenalan</h3>
-                        <p class="mb-6">Jika ingin membicarakan tentang pekerjaan, atau hanya ingin menyapa 'hai', silakan isi form ini atau langsung silahkan hubungi saya.</p>
-                        <div class="space-y-4">
-                            <div class="flex items-center">
-                                <i class="fas fa-envelope text-xl w-8"></i>
-                                <a href="mailto:your.email@example.com" class="hover:underline">laaaradelfa@gmail.com</a>
+        <div class="section gradient-bg" data-anchor="contact">
+            <div class="content-wrapper">
+                <div class="container mx-auto px-4">
+                    <h2 class="text-3xl font-bold mb-8 text-center text-white">Menghubungi..</h2>
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                            <h3 class="text-xl font-semibold mb-4 text-white">Mari berkenalan</h3>
+                            <p class="mb-6 text-white">Jika ingin membicarakan tentang pekerjaan, atau hanya ingin menyapa 'hai', silahkan isi form ini atau langsung hubungi saya.</p>
+                            <div class="space-y-4 text-white">
+                                <div class="flex items-center">
+                                    <i class="fas fa-envelope text-xl w-8"></i>
+                                    <a href="mailto:laaaradelfa@gmail.com" class="hover:underline">laaaradelfa@gmail.com</a>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-map-marker-alt text-xl w-8"></i>
+                                    <span>Tangerang, Banten</span>
+                                </div>
                             </div>
-                            <!-- <div class="flex items-center">
-                                <i class="fas fa-phone text-xl w-8"></i>
-                                <a href="tel:+1234567890" class="hover:underline">+1 (234) 567-890</a>
-                            </div> -->
-                            <div class="flex items-center">
-                                <i class="fas fa-map-marker-alt text-xl w-8"></i>
-                                <span>Tangerang, Banten</span>
+                            <div class="flex space-x-4 mt-8">
+                                <a href="https://github.com/laradelfa" class="bg-white text-red-600 w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-100 transition duration-300">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://instagram.com/faaadelmr" class="bg-white text-red-600 w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-100 transition duration-300">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
                             </div>
                         </div>
-                        <div class="flex space-x-4 mt-8">
-                            <a href="https://github.com/laradelfa" class="bg-white text-red-600 w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-100 transition duration-300">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://instagram.com/faaadelmr" class="bg-white text-red-600 w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-100 transition duration-300">
-                                <i class="fab fa-instagram"></i>
-                            </a>
+                        <div class="md:w-1/2">
+                            <form class="bg-white p-6 rounded-lg shadow-md text-gray-800"
+                                  action="https://formspree.io/f/mnnppdyd"
+                                  method="POST">
+                                <div class="mb-4">
+                                    <label for="email" class="block text-gray-700 font-medium mb-2">Your email:</label>
+                                    <input type="email" id="email" name="email" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-red-500">
+                                </div>
+                                <div class="mb-4">
+                                    <label for="message" class="block text-gray-700 font-medium mb-2">Your message:</label>
+                                    <textarea id="message" name="message" rows="4" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-red-500"></textarea>
+                                </div>
+                                <button type="submit" class="bg-red-600 text-white px-6 py-3 rounded font-semibold hover:bg-red-700 transition duration-300 w-full">Send</button>
+                            </form>
                         </div>
                     </div>
-                    <div class="md:w-1/2">
-                        <form class="bg-white p-6 rounded-lg shadow-md text-gray-800"
-                              action="https://formspree.io/f/mnnppdyd"
-                              method="POST">
-                            <div class="mb-4">
-                                <label for="email" class="block text-gray-700 font-medium mb-2">Your email:</label>
-                                <input type="email" id="email" name="email" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-red-500">
-                            </div>
-                            <div class="mb-4">
-                                <label for="message" class="block text-gray-700 font-medium mb-2">Your message:</label>
-                                <textarea id="message" name="message" rows="4" class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-red-500"></textarea>
-                            </div>
-                            <button type="submit" class="bg-red-600 text-white px-6 py-3 rounded font-semibold hover:bg-red-700 transition duration-300 w-full">Send</button>
-                        </form>                    </div>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- Footer -->
-        <footer class="bg-gray-800 text-white py-8">
-            <div class="container mx-auto px-4">
-                <div class="flex flex-col md:flex-row justify-between items-center">
-                    <div class="mb-4 md:mb-0">
-                        <a href="#" class="text-2xl font-bold">
-                            <span class="text-red-500">Fadel</span>MuhamadRifai
-                        </a>
-                        <p class="mt-2">Full Stack Developer</p>
-                    </div>
-                    <div class="flex flex-col items-center md:items-end">
-                        <p>&copy; 2025 Laradelfa. All rights reserved.</p>
-                        <div class="flex space-x-4 mt-4">
-                            <a href="https://github.com/laradelfa" class="hover:text-red-500"><i class="fab fa-github"></i></a>
-                            <!-- <a href="#" class="hover:text-red-500"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" class="hover:text-red-500"><i class="fab fa-twitter"></i></a> -->
+        <!-- Footer Section -->
+        <div class="section bg-gray-800 text-white" data-anchor="footer">
+            <div class="container mx-auto px-4 h-full flex items-center">
+                <div class="w-full">
+                    <div class="flex flex-col md:flex-row justify-between items-center">
+                        <div class="mb-4 md:mb-0">
+                            <a href="#" class="text-2xl font-bold">
+                                <span class="text-red-500">Fadel</span>MuhamadRifai
+                            </a>
+                            <p class="mt-2">Full Stack Developer</p>
+                        </div>
+                        <div class="flex flex-col items-center md:items-end">
+                            <p>&copy; 2025 Laradelfa. All rights reserved.</p>
+                            <div class="flex space-x-4 mt-4">
+                                <a href="https://github.com/laradelfa" class="hover:text-red-500"><i class="fab fa-github"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </footer>
+        </div>
     </div>
 
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.js"></script>
     <script>
+        // Initialize fullPage.js
+        new fullpage('#fullpage', {
+            //options here
+            autoScrolling: true,
+            scrollHorizontally: true,
+            navigation: true,
+            navigationPosition: 'right',
+            navigationTooltips: ['Beranda', '<span class=text-red-800>Tentang</span>', '<span class=text-red-800>Proyek</span>', '<span class=text-red-800>Skill</span>', '<span class=text-red-800>Hubungi</span>', 'Catatan Akhir'],
+            showActiveTooltip: true,
+            scrollOverflow: true,
+            scrollOverflowReset: true,
+            responsiveWidth: 768,
+            anchors: ['home', 'about', 'projects', 'skills', 'contact', 'footer'],
+            menu: '#menu',
+            css3: true,
+            easingcss3: 'cubic-bezier(0.645, 0.045, 0.355, 1.000)',
+            afterLoad: function(origin, destination, direction) {
+                // Add animations or triggers when a section is loaded
+                const section = destination.item;
+                const content = section.querySelector('.content-wrapper');
+                if (content) {
+                    content.style.opacity = 1;
+                }
+            }
+        });
+
         // Mobile Menu Toggle
         document.getElementById('menu-toggle').addEventListener('click', function() {
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Smooth Scrolling for Anchor Links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                const navHeight = document.querySelector('nav').offsetHeight;
-                
-                window.scrollTo({
-                    top: targetElement.offsetTop - navHeight,
-                    behavior: 'smooth'
-                });
-                
-                // Close mobile menu if open
+        // Handle mobile menu item clicks
+        document.querySelectorAll('#mobile-menu a').forEach(anchor => {
+            anchor.addEventListener('click', function() {
                 document.getElementById('mobile-menu').classList.add('hidden');
             });
         });
-
-        // Section Animation on Scroll
-        const sections = document.querySelectorAll('.section');
-        
-        function checkVisibility() {
-            sections.forEach(section => {
-                const sectionTop = section.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                
-                if (sectionTop < windowHeight * 0.75) {
-                    section.classList.add('active');
-                }
-            });
-        }
-        
-        // Initial check
-        checkVisibility();
-        
-        // Check on scroll
-        window.addEventListener('scroll', checkVisibility);
     </script>
+
+    <!-- Update main.js reference -->
+    <script src="main.js"></script>
 </body>
 </html>
