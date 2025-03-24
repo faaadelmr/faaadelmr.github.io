@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
         autoSlideInterval = setInterval(() => {
             currentIndex = (currentIndex + 1) % slideCount;
             updateSlider();
-        }, 5000); // Change slide every 5 seconds
+        }, 10000); // Change slide every 10 seconds
     }
     
     function stopAutoSlide() {

@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fadel MuhamadRifai - Developer Portfolio</title>
+    <title>Laradelfa - Developer Portfolio</title>
+    <link rel="icon" type="image/png" href="asset/melglas.png">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="preload" href="asset/pic1.webp" as="image" type="image/webp">
     <style>
         .gradient-bg {
             background: linear-gradient(135deg, #e6342b 0%, #3d1d16 100%);
@@ -50,7 +52,7 @@
             <div class="container mx-auto px-4 h-full flex items-center">
                 <div class="flex flex-col md:flex-row items-center">
                     <div class="md:w-1/2 mb-8 md:mb-0">
-                        <h1 class="text-4xl md:text-6xl font-bold mb-4 text-white"><span class="text-black">Fadel</span> MuhamadRifai</h1>
+                        <h1 class="text-4xl md:text-6xl font-bold mb-4 text-white"><span class="text-black">Fadel</span>MuhamadRifai</h1>
                         <p class="text-xl mb-8 text-white">Full Stack Developer, Laravel, Tailwind, Cody dan teknologi lainnya yang membantu produktifitas pemrogramman.</p>
                         <div class="flex space-x-4">
                             <a href="#projects" class="bg-white text-red-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition duration-300">Lihat Projek Saya</a>
@@ -58,7 +60,15 @@
                         </div>
                     </div>
                     <div class="md:w-1/2 flex justify-center">
-                        <img src="pic1.jpg" alt="Photo" class="rounded-full border-4 border-white shadow-xl h-64 w-64 object-cover">
+                        <img 
+                            src="asset/pic1.webp" 
+                            alt="Photo" 
+                            class="rounded-full border-4 border-white shadow-xl h-64 w-64 object-cover"
+                            width="256" 
+                            height="256"
+                            loading="eager"
+                            fetchpriority="high"
+                        >
                     </div>
                 </div>
             </div>
@@ -68,12 +78,13 @@
         <div class="section bg-white" data-anchor="about">
             <div class="content-wrapper">
                 <div class="container mx-22 px-4">
-                    <h2 class="text-3xl font-bold mb-8 text-center">Tentang Saya</h2>
+                    
                     <div class="flex flex-col md:flex-row items-center">
                         <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
-                            <img src="/api/placeholder/300/400" alt="Profile" class="rounded-lg shadow-lg h-80 object-cover">
+                            <img src="asset/pic2.webp" alt="Profile" class="rounded-lg shadow-lg h-92 object-cover">
                         </div>
                         <div class="md:w-2/3 md:pl-12">
+                            <h2 class="text-3xl font-bold mb-8 text-left">Tentang Saya</h2>
                             <p class="text-lg mb-6">Saya adalah seorang penggemar Laravel dan saat ini sedang dalam proses belajar. Saat ini, saya menempuh pendidikan di Universitas Dian Nusantara, jurusan IT, semester 6. Meskipun saya bekerja sebagai Administrasi di salah satu perusahaan asuransi, pekerjaan ini belum sesuai dengan impian saya. Namun, saya tetap bersyukur memiliki pekerjaan.</p>
                             <p class="text-lg mb-6">Saya senang mendengar jika Anda sedang mencari seorang programmer. Semoga saya bisa menjadi salah satu kandidat yang Anda cari. Silakan untuk melihat-lihat. </p>
                             <p class="text-lg mb-6">Terima kasih telah mengunjungi.</p>
