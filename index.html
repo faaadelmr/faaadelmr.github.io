@@ -42,6 +42,50 @@
         .fp-watermark {
             display: none !important;
         }
+        /* Animations for certificate cards */
+        @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            @keyframes fadeOutDown {
+                from {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+                to {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+            }
+            
+            .certificate-card {
+                animation: fadeInUp 0.5s ease forwards;
+            }
+            
+            .certificate-card.animate-out {
+                animation: fadeOutDown 0.3s ease forwards;
+            }
+            
+            /* Smooth transition for pagination dots */
+            .pagination-dot {
+                transition: background-color 0.3s ease, transform 0.3s ease;
+            }
+            
+            .pagination-dot.active {
+                transform: scale(1.2);
+            }
+            
+            /* Hover effect for navigation buttons */
+            #prev-btn:hover, #next-btn:hover {
+                transform: translateY(-50%) scale(1.1);
+            }
     </style>
 </head>
 <body class="font-sans">
@@ -49,49 +93,83 @@
     <div id="fullpage">
         <!-- Home Section -->
         <div class="section gradient-bg" data-anchor="home">
-            <div class="container mx-auto px-4 h-full flex items-center">
-                <div class="flex flex-col md:flex-row items-center">
-                    <div class="md:w-1/2 mb-8 md:mb-0">
-                        <h1 class="text-4xl md:text-6xl font-bold mb-4 text-white"><span class="text-black">Fadel</span>MuhamadRifai</h1>
-                        <p class="text-xl mb-8 text-white">Full Stack Developer, Laravel, Tailwind, Cody dan teknologi lainnya yang membantu produktifitas pemrogramman.</p>
-                        <div class="flex space-x-4">
-                            <a href="#projects" class="bg-white text-red-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition duration-300">Lihat Projek Saya</a>
-                            <a href="#contact" class="border-2 border-white text-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-red-600 transition duration-300">Hubungi Saya</a>
-                        </div>
-                    </div>
-                    <div class="md:w-1/2 flex justify-center">
-                        <img 
-                            src="asset/pic1.webp" 
-                            alt="Photo" 
-                            class="rounded-full border-4 border-white shadow-xl h-64 w-64 object-cover"
-                            width="256" 
-                            height="256"
-                            loading="eager"
-                            fetchpriority="high"
-                        >
-                    </div>
+            <div class="container mx-auto px-4 h-screen flex items-center justify-center">
+            <div class="flex flex-col lg:flex-row items-center w-full max-w-7xl">
+                <div class="lg:w-1/2 mb-8 lg:mb-0 text-center lg:text-left px-4">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white">
+                    <span class="text-black">Fadel</span>MuhamadRifai
+                </h1>
+                <p class="text-lg sm:text-xl mb-6 sm:mb-8 text-white">
+                    Full Stack Developer, Laravel, Tailwind, Cody dan teknologi lainnya yang membantu produktifitas pemrogramman.
+                </p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center lg:justify-start">
+                    <a href="#projects" 
+                       class="bg-white text-red-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition duration-300 text-center">
+                    Lihat Projek Saya
+                    </a>
+                    <a href="#contact" 
+                       class="border-2 border-white text-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-red-600 transition duration-300 text-center">
+                    Hubungi Saya
+                    </a>
                 </div>
+                </div>
+                <div class="lg:w-1/2 flex justify-center px-4">
+                <img src="asset/pic1.webp"
+                     alt="Photo"
+                     class="rounded-full border-4 border-white shadow-xl h-48 w-48 sm:h-56 sm:w-56 md:h-64 md:w-64 object-cover"
+                     width="256"
+                     height="256"
+                     loading="eager"
+                     fetchpriority="high">
+                </div>
+            </div>
             </div>
         </div>
 
         <!-- About Section -->
         <div class="section bg-white" data-anchor="about">
-            <div class="content-wrapper">
-                <div class="container mx-22 px-4">
-                    
-                    <div class="flex flex-col md:flex-row items-center">
-                        <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
-                            <img src="asset/pic2.webp" alt="Profile" class="rounded-lg shadow-lg h-92 object-cover">
+            <div class="content-wrapper py-8 md:py-12 h-full flex items-center">
+                <div class="container mx-auto px-4 sm:px-6">
+                    <div class="flex flex-col lg:flex-row items-center h-full">
+                        <!-- Profile Image - Responsive sizing -->
+                        <div class="w-full lg:w-1/3 mb-6 lg:mb-0 flex justify-center">
+                            <img 
+                                src="asset/pic2.webp" 
+                                alt="Profile" 
+                                class="rounded-lg shadow-lg w-3/4 sm:w-2/3 md:w-1/2 lg:w-full max-w-[250px] object-cover"
+                                loading="lazy"
+                            >
                         </div>
-                        <div class="md:w-2/3 md:pl-12">
-                            <h2 class="text-3xl font-bold mb-8 text-left">Tentang Saya</h2>
-                            <p class="text-lg mb-6">Saya adalah seorang penggemar Laravel dan saat ini sedang dalam proses belajar. Saat ini, saya menempuh pendidikan di Universitas Dian Nusantara, jurusan IT, semester 6. Meskipun saya bekerja sebagai Administrasi di salah satu perusahaan asuransi, pekerjaan ini belum sesuai dengan impian saya. Namun, saya tetap bersyukur memiliki pekerjaan.</p>
-                            <p class="text-lg mb-6">Saya senang mendengar jika Anda sedang mencari seorang programmer. Semoga saya bisa menjadi salah satu kandidat yang Anda cari. Silakan untuk melihat-lihat. </p>
-                            <p class="text-lg mb-6">Terima kasih telah mengunjungi.</p>
-                            <div class="flex space-x-4 mt-8">
-                                <a href="https://github.com/laradelfa" class="text-red-600 hover:text-red-700 text-2xl"><i class="fab fa-github"></i></a>
-                                <a href="https://linkedin.com/faaadelmr" class="text-red-600 hover:text-red-700 text-2xl"><i class="fab fa-linkedin"></i></a>
-                                <a href="https://instagram.com/faaadelmr" class="text-red-600 hover:text-red-700 text-2xl"><i class="fab fa-instagram"></i></a>
+                        
+                        <!-- Text Content - Improved spacing and responsive text -->
+                        <div class="w-full lg:w-2/3 lg:pl-8 xl:pl-12">
+                            <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 lg:mb-8 text-center lg:text-left">Tentang Saya</h2>
+                            
+                            <div class="space-y-4 sm:space-y-6">
+                                <p class="text-base sm:text-lg text-center lg:text-left">
+                                    Saya adalah seorang penggemar Laravel dan saat ini sedang dalam proses belajar. Saat ini, saya menempuh pendidikan di Universitas Dian Nusantara, jurusan IT, semester 6. Meskipun saya bekerja sebagai Administrasi di salah satu perusahaan asuransi, pekerjaan ini belum sesuai dengan impian saya. Namun, saya tetap bersyukur memiliki pekerjaan.
+                                </p>
+                                
+                                <p class="text-base sm:text-lg text-center lg:text-left">
+                                    Saya senang mendengar jika Anda sedang mencari seorang programmer. Semoga saya bisa menjadi salah satu kandidat yang Anda cari. Silakan untuk melihat-lihat.
+                                </p>
+                                
+                                <p class="text-base sm:text-lg text-center lg:text-left">
+                                    Terima kasih telah mengunjungi.
+                                </p>
+                            </div>
+                            
+                            <!-- Social Icons - Better spacing for mobile -->
+                            <div class="flex justify-center lg:justify-start space-x-6 mt-6 sm:mt-8">
+                                <a href="https://github.com/laradelfa" class="text-red-600 hover:text-red-700 text-xl sm:text-2xl transition-colors duration-300" aria-label="GitHub">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://linkedin.com/faaadelmr" class="text-red-600 hover:text-red-700 text-xl sm:text-2xl transition-colors duration-300" aria-label="LinkedIn">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="https://instagram.com/faaadelmr" class="text-red-600 hover:text-red-700 text-xl sm:text-2xl transition-colors duration-300" aria-label="Instagram">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -103,96 +181,76 @@
         <div class="section bg-gray-100" data-anchor="projects">
             <div class="content-wrapper">
                 <div class="container mx-auto px-4">
-                    <h2 class="text-3xl font-bold mb-8 text-center">Proyek Saya</h2>
+                    <h2 class="text-3xl font-bold mb-4 md:mb-8 text-center">Proyek Saya</h2>
                     
                     <!-- Project Slider Container -->
-                    <div class="project-slider-container h-100vh mx-22 relative">
-                        <div class="project-slides h-full overflow-hidden">
-                            <div class="project-slide-wrapper flex h-full transition-transform duration-500">
+                    <div class="project-slider-container relative">
+                        <div class="project-slides overflow-hidden">
+                            <div class="project-slide-wrapper flex transition-transform duration-500">
                                 <!-- Project Tanma -->
-                                <div class="project-slide w-full flex-shrink-0 flex items-center py-12">
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                                <div class="project-slide w-full flex-shrink-0 flex items-center py-4 md:py-12">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-12 items-center">
                                         <div class="transform hover:scale-105 transition-transform duration-300 max-w-2xl">
                                             <img src="https://github.com/laradelfa/tanma/blob/main/public/ss/0.jpg?raw=true" alt="Project Tanma" class="w-full rounded-lg shadow-2xl hover:shadow-3xl transition-shadow duration-300">
                                         </div>
-                                        <div class="space-y-6">
-                                            <h3 class="text-4xl font-bold text-red-600">Tanma</h3>
-                                            <p class="text-xl text-gray-700 leading-relaxed">Aplikasi Report yang ada pada pekerjaan saya sekarang, jadi sebelumnya kami melakukan report melalui WA dan Excel. dengan adanya aplikasi ini hanya perlu mengisi di satu tempat. dan juga ada beberapa tambahan app seperti PDFmerge, PDF selected dan juga SplitBill untuk mempermudah pekerjaan.</p>
-                                            <div class="flex flex-wrap gap-3">
-                                                <span class="bg-red-100 text-red-600 px-4 py-2 rounded-full text-lg font-semibold hover:bg-red-200 transition-colors duration-300">Laravel</span>
-                                                <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-lg font-semibold hover:bg-blue-200 transition-colors duration-300">Tailwind</span>
-                                                <span class="bg-yellow-100 text-yellow-600 px-4 py-2 rounded-full text-lg font-semibold hover:bg-yellow-200 transition-colors duration-300">PDF.js</span>
-                                                <span class="bg-green-100 text-green-600 px-4 py-2 rounded-full text-lg font-semibold hover:bg-green-200 transition-colors duration-300">DaisyUI</span>
+                                        <div class="space-y-3 md:space-y-6 mt-4 md:mt-0">
+                                            <h3 class="text-2xl md:text-4xl font-bold text-red-600">Tanma</h3>
+                                            <p class="text-base md:text-xl text-gray-700 leading-relaxed">Aplikasi Report yang ada pada pekerjaan saya sekarang, jadi sebelumnya kami melakukan report melalui WA dan Excel. dengan adanya aplikasi ini hanya perlu mengisi di satu tempat. dan juga ada beberapa tambahan app seperti PDFmerge, PDF selected dan juga SplitBill untuk mempermudah pekerjaan.</p>
+                                            <div class="flex flex-wrap gap-2 md:gap-3">
+                                                <span class="bg-red-100 text-red-600 px-3 py-1 md:px-4 md:py-2 rounded-full text-sm md:text-lg font-semibold hover:bg-red-200 transition-colors duration-300">Laravel</span>
+                                                <span class="bg-blue-100 text-blue-600 px-3 py-1 md:px-4 md:py-2 rounded-full text-sm md:text-lg font-semibold hover:bg-blue-200 transition-colors duration-300">Tailwind</span>
+                                                <span class="bg-yellow-100 text-yellow-600 px-3 py-1 md:px-4 md:py-2 rounded-full text-sm md:text-lg font-semibold hover:bg-yellow-200 transition-colors duration-300">PDF.js</span>
+                                                <span class="bg-green-100 text-green-600 px-3 py-1 md:px-4 md:py-2 rounded-full text-sm md:text-lg font-semibold hover:bg-green-200 transition-colors duration-300">DaisyUI</span>
                                             </div>
-                                            <div class="flex gap-4">
-                                                <a href="https://mentanma.cyou" class="bg-red-600 text-white px-8 py-3 rounded-full text-lg font-bold hover:bg-red-700 transform hover:scale-105 transition-all duration-300">Live Demo</a>
-                                                <a href="https://github.com/laradelfa/tanma" class="bg-gray-800 text-white px-8 py-3 rounded-full text-lg font-bold hover:bg-gray-900 transform hover:scale-105 transition-all duration-300">View Code</a>
+                                            <div class="flex flex-col sm:flex-row gap-3 md:gap-4">
+                                                <a href="https://mentanma.cyou" class="bg-red-600 text-white px-6 py-2 md:px-8 md:py-3 rounded-full text-base md:text-lg font-bold hover:bg-red-700 transform hover:scale-105 transition-all duration-300 text-center">Live Demo</a>
+                                                <a href="https://github.com/laradelfa/tanma" class="bg-gray-800 text-white px-6 py-2 md:px-8 md:py-3 rounded-full text-base md:text-lg font-bold hover:bg-gray-900 transform hover:scale-105 transition-all duration-300 text-center">View Code</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 
                                 <!-- Project 2 -->
-                                <div class="project-slide w-full flex-shrink-0 flex items-center">
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                                <div class="project-slide w-full flex-shrink-0 flex items-center py-4 md:py-12">
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 items-center">
                                         <div class="transform hover:scale-105 transition-transform duration-300">
                                             <img src="https://github.com/laradelfa/laradelfa.github.io/blob/main/asset/Screenshot.png?raw=true" alt="Project 2" class="w-full rounded-lg shadow-2xl hover:shadow-3xl transition-shadow duration-300">
                                         </div>
-                                        <div class="space-y-6">
-                                            <h3 class="text-4xl font-bold text-red-600">Portfolio Website</h3>
-                                            <p class="text-xl text-gray-700 leading-relaxed">Website portfolio personal yang dibuat dengan HTML, Tailwind CSS, dan JavaScript. Menggunakan FullPage.js untuk navigasi halaman yang menarik.</p>
-                                            <div class="flex flex-wrap gap-3">
-                                                <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-lg font-semibold hover:bg-blue-200 transition-colors duration-300">HTML</span>
-                                                <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-lg font-semibold hover:bg-blue-200 transition-colors duration-300">Tailwind</span>
-                                                <span class="bg-yellow-100 text-yellow-600 px-4 py-2 rounded-full text-lg font-semibold hover:bg-yellow-200 transition-colors duration-300">JavaScript</span>
-                                                <span class="bg-purple-100 text-purple-600 px-4 py-2 rounded-full text-lg font-semibold hover:bg-purple-200 transition-colors duration-300">FullPage.js</span>
+                                        <div class="space-y-3 md:space-y-6 mt-4 md:mt-0">
+                                            <h3 class="text-2xl md:text-4xl font-bold text-red-600">Portfolio Website</h3>
+                                            <p class="text-base md:text-xl text-gray-700 leading-relaxed">Website portfolio personal yang dibuat dengan HTML, Tailwind CSS, dan JavaScript. Menggunakan FullPage.js untuk navigasi halaman yang menarik.</p>
+                                            <div class="flex flex-wrap gap-2 md:gap-3">
+                                                <span class="bg-blue-100 text-blue-600 px-3 py-1 md:px-4 md:py-2 rounded-full text-sm md:text-lg font-semibold hover:bg-blue-200 transition-colors duration-300">HTML</span>
+                                                <span class="bg-blue-100 text-blue-600 px-3 py-1 md:px-4 md:py-2 rounded-full text-sm md:text-lg font-semibold hover:bg-blue-200 transition-colors duration-300">Tailwind</span>
+                                                <span class="bg-yellow-100 text-yellow-600 px-3 py-1 md:px-4 md:py-2 rounded-full text-sm md:text-lg font-semibold hover:bg-yellow-200 transition-colors duration-300">JavaScript</span>
+                                                <span class="bg-purple-100 text-purple-600 px-3 py-1 md:px-4 md:py-2 rounded-full text-sm md:text-lg font-semibold hover:bg-purple-200 transition-colors duration-300">FullPage.js</span>
                                             </div>
-                                            <div class="flex gap-4">
-                                                <a href="#" class="bg-red-600 text-white px-8 py-3 rounded-full text-lg font-bold hover:bg-red-700 transform hover:scale-105 transition-all duration-300">Live Demo</a>
-                                                <a href="#" class="bg-gray-800 text-white px-8 py-3 rounded-full text-lg font-bold hover:bg-gray-900 transform hover:scale-105 transition-all duration-300">View Code</a>
+                                            <div class="flex flex-col sm:flex-row gap-3 md:gap-4">
+                                                <a href="#" class="bg-red-600 text-white px-6 py-2 md:px-8 md:py-3 rounded-full text-base md:text-lg font-bold hover:bg-red-700 transform hover:scale-105 transition-all duration-300 text-center">Live Demo</a>
+                                                <a href="#" class="bg-gray-800 text-white px-6 py-2 md:px-8 md:py-3 rounded-full text-base md:text-lg font-bold hover:bg-gray-900 transform hover:scale-105 transition-all duration-300 text-center">View Code</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                
-                                <!-- Project 3 -->
-                                <!-- <div class="project-slide w-full flex-shrink-0 flex items-center">
-                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                                        <div class="transform hover:scale-105 transition-transform duration-300">
-                                            <img src="https://via.placeholder.com/600x300" alt="Project 3" class="w-full rounded-lg shadow-2xl hover:shadow-3xl transition-shadow duration-300">
-                                        </div>
-                                        <div class="space-y-6">
-                                            <h3 class="text-4xl font-bold text-red-600">E-Commerce Dashboard</h3>
-                                            <p class="text-xl text-gray-700 leading-relaxed">Dashboard admin untuk toko online dengan fitur manajemen produk, pesanan, dan analitik penjualan. Dibuat dengan Laravel dan Livewire.</p>
-                                            <div class="flex flex-wrap gap-3">
-                                                <span class="bg-red-100 text-red-600 px-4 py-2 rounded-full text-lg font-semibold hover:bg-red-200 transition-colors duration-300">Laravel</span>
-                                                <span class="bg-purple-100 text-purple-600 px-4 py-2 rounded-full text-lg font-semibold hover:bg-purple-200 transition-colors duration-300">Livewire</span>
-                                                <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-lg font-semibold hover:bg-blue-200 transition-colors duration-300">Tailwind</span>
-                                                <span class="bg-green-100 text-green-600 px-4 py-2 rounded-full text-lg font-semibold hover:bg-green-200 transition-colors duration-300">MySQL</span>
-                                            </div>
-                                            <div class="flex gap-4">
-                                                <a href="#" class="bg-red-600 text-white px-8 py-3 rounded-full text-lg font-bold hover:bg-red-700 transform hover:scale-105 transition-all duration-300">Live Demo</a>
-                                                <a href="#" class="bg-gray-800 text-white px-8 py-3 rounded-full text-lg font-bold hover:bg-gray-900 transform hover:scale-105 transition-all duration-300">View Code</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
                             </div>
                         </div>
                         
                         <!-- Navigation Arrows -->
-                        <button id="prev-project" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white text-red-600 w-12 h-12 rounded-full shadow-lg z-10 focus:outline-none hover:bg-gray-100 hover:scale-110 transition-all duration-300">
-                            <i class="fas fa-chevron-left text-xl"></i>
+                        <button id="prev-project" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white text-red-600 w-8 h-8 md:w-12 md:h-12 rounded-full shadow-lg z-10 focus:outline-none hover:bg-gray-100 hover:scale-110 transition-all duration-300 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                            </svg>
                         </button>
-                        <button id="next-project" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white text-red-600 w-12 h-12 rounded-full shadow-lg z-10 focus:outline-none hover:bg-gray-100 hover:scale-110 transition-all duration-300">
-                            <i class="fas fa-chevron-right text-xl"></i>
+                        <button id="next-project" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white text-red-600 w-8 h-8 md:w-12 md:h-12 rounded-full shadow-lg z-10 focus:outline-none hover:bg-gray-100 hover:scale-110 transition-all duration-300 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
                         </button>
                         
                         <!-- Dots Indicator -->
-                        <div class="project-dots flex justify-center mt-8 space-x-3">
-                            <button class="w-4 h-4 rounded-full bg-red-600 hover:scale-125 transition-transform duration-300" data-index="0"></button>
-                            <button class="w-4 h-4 rounded-full bg-gray-300 hover:scale-125 transition-transform duration-300" data-index="1"></button>
-                            <!-- <button class="w-4 h-4 rounded-full bg-gray-300 hover:scale-125 transition-transform duration-300" data-index="2"></button> -->
+                        <div class="project-dots flex justify-center mt-4 md:mt-8 space-x-3">
+                            <button class="w-3 h-3 md:w-4 md:h-4 rounded-full bg-red-600 hover:scale-125 transition-transform duration-300" data-index="0"></button>
+                            <button class="w-3 h-3 md:w-4 md:h-4 rounded-full bg-gray-300 hover:scale-125 transition-transform duration-300" data-index="1"></button>
                         </div>
                     </div>
                 </div>
@@ -200,112 +258,296 @@
         </div>
 
 
-        <!-- Skills Section -->
-        <div class="section bg-white" data-anchor="skills">
+        <!-- Certifications Gallery Section -->
+        <div class="section bg-gray-50 py-16" data-anchor="certifications">
             <div class="content-wrapper">
                 <div class="container mx-auto px-4">
-                    <h2 class="text-3xl font-bold mb-8 text-center">Skill Saya</h2>
-                    <p class="text-m font-light mb-8 text-center">Karena kesibukan yang belum sesuai dengan pekerjaan saya maka masih banyak hal yang belum saya coba.</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        <!-- Backend Skills -->
-                        <div class="card bg-gray-50 p-6 rounded-lg shadow-md">
-                            <div class="text-red-600 text-4xl mb-4">
-                                <i class="fas fa-server"></i>
-                            </div>
-                            <h3 class="text-xl font-semibold mb-4">Backend Development</h3>
-                            <ul class="space-y-2">
-                                <li class="flex items-center">
-                                    <span class="w-32">Laravel</span>
-                                    <div class="w-full bg-gray-200 rounded-full h-2">
-                                        <div class="bg-red-600 h-2 rounded-full" style="width: 95%"></div>
-                                    </div>
-                                </li>
-                                <li class="flex items-center">
-                                    <span class="w-32">PHP</span>
-                                    <div class="w-full bg-gray-200 rounded-full h-2">
-                                        <div class="bg-red-600 h-2 rounded-full" style="width: 90%"></div>
-                                    </div>
-                                </li>
-                                <li class="flex items-center">
-                                    <span class="w-32">MySQL</span>
-                                    <div class="w-full bg-gray-200 rounded-full h-2">
-                                        <div class="bg-red-600 h-2 rounded-full" style="width: 85%"></div>
-                                    </div>
-                                </li>
-                                <li class="flex items-center">
-                                    <span class="w-32">API Design</span>
-                                    <div class="w-full bg-gray-200 rounded-full h-2">
-                                        <div class="bg-red-600 h-2 rounded-full" style="width: 30%"></div>
-                                    </div>
-                                </li>
-                            </ul>
+                    <h2 class="text-4xl font-extrabold mb-6 text-center text-gray-800">Galeri Sertifikat</h2>
+                    
+                    <!-- Gallery Carousel Container -->
+                    <div class="relative">
+                        <!-- Left Arrow -->
+                        <button id="prev-btn" class="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white bg-opacity-80 rounded-full p-2 shadow-md hover:bg-opacity-100 focus:outline-none -ml-4 sm:ml-0 transition-all duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                            </svg>
+                        </button>
+                        
+                        <!-- Gallery Grid -->
+                        <div id="certificate-gallery" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 overflow-hidden transition-all duration-500">
+                            <!-- Certificates will be dynamically inserted here -->
                         </div>
                         
-                        <!-- Frontend Skills -->
-                        <div class="card bg-gray-50 p-6 rounded-lg shadow-md">
-                            <div class="text-red-600 text-4xl mb-4">
-                                <i class="fas fa-code"></i>
-                            </div>
-                            <h3 class="text-xl font-semibold mb-4">Frontend Development</h3>
-                            <ul class="space-y-2">
-                                <li class="flex items-center">
-                                    <span class="w-32">Livewire</span>
-                                    <div class="w-full bg-gray-200 rounded-full h-2">
-                                        <div class="bg-red-600 h-2 rounded-full" style="width: 40%"></div>
-                                    </div>
-                                </li>
-                                <li class="flex items-center">
-                                    <span class="w-32">JavaScript</span>
-                                    <div class="w-full bg-gray-200 rounded-full h-2">
-                                        <div class="bg-red-600 h-2 rounded-full" style="width: 75%"></div>
-                                    </div>
-                                </li>
-                                <li class="flex items-center">
-                                    <span class="w-32">Tailwind CSS</span>
-                                    <div class="w-full bg-gray-200 rounded-full h-2">
-                                        <div class="bg-red-600 h-2 rounded-full" style="width: 95%"></div>
-                                    </div>
-                                </li>
-                                <li class="flex items-center">
-                                    <span class="w-32">HTML/CSS</span>
-                                    <div class="w-full bg-gray-200 rounded-full h-2">
-                                        <div class="bg-red-600 h-2 rounded-full" style="width: 90%"></div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        
-                        <!-- DevOps Skills -->
-                        <div class="card bg-gray-50 p-6 rounded-lg shadow-md">
-                            <div class="text-red-600 text-4xl mb-4">
-                                <i class="fas fa-cloud"></i>
-                            </div>
-                            <h3 class="text-xl font-semibold mb-4">DevOps & Tools</h3>
-                            <ul class="space-y-2">
-                                <li class="flex items-center">
-                                    <span class="w-32">Git</span>
-                                    <div class="w-full bg-gray-200 rounded-full h-2">
-                                        <div class="bg-red-600 h-2 rounded-full" style="width: 80%"></div>
-                                    </div>
-                                </li>
-                                <li class="flex items-center">
-                                    <span class="w-32">Docker</span>
-                                    <div class="w-full bg-gray-200 rounded-full h-2">
-                                        <div class="bg-red-600 h-2 rounded-full" style="width: 1%"></div>
-                                    </div>
-                                </li>
-                                <li class="flex items-center">
-                                    <span class="w-32">CI/CD</span>
-                                    <div class="w-full bg-gray-200 rounded-full h-2">
-                                        <div class="bg-red-600 h-2 rounded-full" style="width: 1%"></div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                        <!-- Right Arrow -->
+                        <button id="next-btn" class="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white bg-opacity-80 rounded-full p-2 shadow-md hover:bg-opacity-100 focus:outline-none -mr-4 sm:mr-0 transition-all duration-300">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <!-- Pagination Dots -->
+                    <div id="pagination-dots" class="flex justify-center mt-6 space-x-2">
+                        <!-- Dots will be dynamically inserted here -->
                     </div>
                 </div>
             </div>
         </div>
+        <script>
+            // Certificate Data
+            const certificates = [
+                { src: "asset/certificate1.webp", title: "Belajar Dasar Pemrograman Web", provider: "Dicoding Academy" },
+                { src: "asset/certificate2.webp", title: "Belajar Membuat Aplikasi Back-End", provider: "Dicoding Academy" },
+                { src: "asset/certificate3.webp", title: "Full-Stack Web Development", provider: "Udemy" },
+                { src: "asset/Screenshot.png", title: "JavaScript Algorithms and Data Structures", provider: "freeCodeCamp" },
+                { src: "asset/Screenshot.png", title: "Responsive Web Design", provider: "freeCodeCamp" },
+                { src: "asset/Screenshot.png", title: "Front-End Libraries", provider: "freeCodeCamp" },
+                { src: "asset/Screenshot.png", title: "Front-End Libraries", provider: "freeCodeCamp" },
+                { src: "asset/Screenshot.png", title: "Front-End Libraries", provider: "freeCodeCamp" },
+                { src: "asset/Screenshot.png", title: "Front-End Libraries", provider: "freeCodeCamp" },
+                // Anda dapat menambahkan lebih banyak sertifikat di sini
+            ];
+
+            // Carousel configuration
+            const itemsPerPage = window.innerWidth >= 768 ? 9 : 3; // Responsive items per page
+            let currentPage = 0;
+            let totalPages = Math.ceil(certificates.length / itemsPerPage);
+            let isAnimating = false; // Flag to prevent rapid pagination clicks
+
+            function renderGallery(animate = true) {
+                if (isAnimating) return; // Prevent rapid clicking
+                isAnimating = animate;
+                
+                const gallery = document.getElementById('certificate-gallery');
+                
+                // If animating, fade out current items first
+                if (animate && gallery.children.length > 0) {
+                    Array.from(gallery.children).forEach(card => {
+                        card.classList.add('animate-out');
+                    });
+                    
+                    // Wait for fade out animation to complete
+                    setTimeout(() => {
+                        populateGallery(gallery);
+                        isAnimating = false;
+                    }, 300); // Match the fadeOutDown animation duration
+                } else {
+                    populateGallery(gallery);
+                    isAnimating = false;
+                }
+            }
+            
+            function populateGallery(gallery) {
+            gallery.innerHTML = ''; // Clear existing content
+            
+            // Calculate start and end indices for current page
+            const startIndex = currentPage * itemsPerPage;
+            const endIndex = Math.min(startIndex + itemsPerPage, certificates.length);
+            const visibleCertificates = certificates.slice(startIndex, endIndex);
+            
+            // Render visible certificates with staggered animation
+            visibleCertificates.forEach((cert, index) => {
+                const card = document.createElement('div');
+                card.className = "relative group overflow-hidden rounded-lg shadow-lg bg-white h-full certificate-card";
+                card.style.animationDelay = `${index * 0.1}s`; // Staggered animation
+                
+                card.innerHTML = `
+                    <div class="aspect-ratio-container" style="position: relative; padding-top: 56.25%;">
+                        <img src="${cert.src}" alt="${cert.title}" class="absolute top-0 left-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
+                    </div>
+                    <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4">
+                        <h3 class="text-lg font-semibold text-white mb-2 text-center">${cert.title}</h3>
+                        <p class="text-sm text-gray-300 text-center">${cert.provider}</p>
+                    </div>
+                `;
+                
+                // Add click event to the entire card
+                card.addEventListener('click', function() {
+                    const img = card.querySelector('img');
+                    showFullScreenImage(img);
+                });
+                
+                gallery.appendChild(card);
+            });
+                
+                // Update pagination dots
+                renderPaginationDots();
+                
+                // Show/hide navigation buttons with fade effect
+                const prevBtn = document.getElementById('prev-btn');
+                const nextBtn = document.getElementById('next-btn');
+                
+                if (currentPage > 0) {
+                    prevBtn.style.opacity = '1';
+                    prevBtn.style.display = 'block';
+                } else {
+                    prevBtn.style.opacity = '0';
+                    setTimeout(() => {
+                        if (currentPage === 0) prevBtn.style.display = 'none';
+                    }, 300);
+                }
+                
+                if (currentPage < totalPages - 1) {
+                    nextBtn.style.opacity = '1';
+                    nextBtn.style.display = 'block';
+                } else {
+                    nextBtn.style.opacity = '0';
+                    setTimeout(() => {
+                        if (currentPage === totalPages - 1) nextBtn.style.display = 'none';
+                    }, 300);
+                }
+            }
+            
+            function renderPaginationDots() {
+                const dotsContainer = document.getElementById('pagination-dots');
+                dotsContainer.innerHTML = '';
+                
+                for (let i = 0; i < totalPages; i++) {
+                    const dot = document.createElement('button');
+                    dot.className = `w-3 h-3 rounded-full pagination-dot ${i === currentPage ? 'bg-blue-600 active' : 'bg-gray-300'}`;
+                    dot.setAttribute('aria-label', `Page ${i + 1}`);
+                    dot.onclick = () => {
+                        if (i !== currentPage) {
+                            currentPage = i;
+                            renderGallery(true);
+                        }
+                    };
+                    dotsContainer.appendChild(dot);
+                }
+            }
+            
+            // Function to show full screen image with animation
+            function showFullScreenImage(img) {
+                const modal = document.createElement('div');
+                modal.className = 'fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-0';
+                modal.style.transition = 'background-opacity 0.3s ease';
+                
+                modal.innerHTML = `
+                    <div class="relative max-w-4xl w-full opacity-0" style="transition: opacity 0.4s ease, transform 0.4s ease; transform: translateY(20px);">
+                        <img src="${img.src}" alt="${img.alt}" class="w-full h-auto max-h-[90vh] object-contain shadow-2xl">
+                        <button class="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors duration-300" onclick="closeModal(this)">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                `;
+                
+                document.body.appendChild(modal);
+                
+                // Animate modal appearance
+                requestAnimationFrame(() => {
+                    modal.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+                    const modalContent = modal.querySelector('div');
+                    modalContent.style.opacity = '1';
+                    modalContent.style.transform = 'translateY(0)';
+                });
+                
+                // Close modal when clicking outside the image
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        closeModal(modal);
+                    }
+                });
+                
+                // Add ESC key to close
+                const escHandler = (e) => {
+                    if (e.key === 'Escape') {
+                        closeModal(modal);
+                        document.removeEventListener('keydown', escHandler);
+                    }
+                };
+                document.addEventListener('keydown', escHandler);
+            }
+            
+            // Function to close modal with animation
+            function closeModal(element) {
+                const modal = element.closest('.fixed');
+                const modalContent = modal.querySelector('div');
+                
+                // Animate out
+                modalContent.style.opacity = '0';
+                modalContent.style.transform = 'translateY(20px)';
+                modal.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+                
+                // Remove after animation completes
+                setTimeout(() => {
+                    modal.remove();
+                }, 400);
+            }
+            
+            // Navigation button event listeners
+            document.getElementById('prev-btn').addEventListener('click', function() {
+                if (currentPage > 0 && !isAnimating) {
+                    currentPage--;
+                    renderGallery(true);
+                }
+            });
+            
+            document.getElementById('next-btn').addEventListener('click', function() {
+                if (currentPage < totalPages - 1 && !isAnimating) {
+                    currentPage++;
+                    renderGallery(true);
+                }
+            });
+            
+            // Add keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowLeft') {
+                    if (currentPage > 0 && !isAnimating) {
+                        currentPage--;
+                        renderGallery(true);
+                    }
+                } else if (e.key === 'ArrowRight') {
+                    if (currentPage < totalPages - 1 && !isAnimating) {
+                        currentPage++;
+                        renderGallery(true);
+                    }
+                }
+            });
+            
+            // Handle window resize to adjust grid and itemsPerPage
+            window.addEventListener('resize', function() {
+                const newItemsPerPage = window.innerWidth >= 768 ? 6 : 2;
+                if (newItemsPerPage !== itemsPerPage) {
+                    currentPage = 0; // Reset to first page when layout changes
+                    totalPages = Math.ceil(certificates.length / newItemsPerPage);
+                }
+                renderGallery(false); // Don't animate on resize
+            });
+            
+            // Ensure gallery fits within the fullpage.js section
+            document.addEventListener('DOMContentLoaded', function() {
+                // If using fullpage.js, adjust the gallery to fit within the section
+                if (typeof fullpage !== 'undefined') {
+                    // This will be called when fullpage.js is ready
+                    const adjustGalleryHeight = () => {
+                        const section = document.querySelector('[data-anchor="certifications"]');
+                        const headerHeight = section.querySelector('h2').offsetHeight;
+                        const descHeight = section.querySelector('p').offsetHeight;
+                        const paginationHeight = 40; // Estimated height for pagination dots
+                        const padding = 80; // Account for section padding (16px)
+                        
+                        const availableHeight = section.offsetHeight - headerHeight - descHeight - paginationHeight - padding;
+                        
+                        // Adjust gallery height
+                        const galleryContainer = document.getElementById('certificate-gallery');
+                        galleryContainer.style.maxHeight = `${availableHeight}px`;
+                    };
+                    
+                    adjustGalleryHeight();
+                    window.addEventListener('resize', adjustGalleryHeight);
+                }
+            });
+            
+            // Initial render
+            renderGallery(false); // Don't animate first load
+            
+            // Make functions available globally
+            window.showFullScreenImage = showFullScreenImage;
+            window.closeModal = closeModal;
+        </script>
+
 
         <!-- Contact Section with Footer -->
         <div class="section gradient-bg" data-anchor="contact">
@@ -327,7 +569,7 @@
                                 </div>
                             </div>
                             <div class="flex space-x-4 mt-8">
-                                <a href="https://github.com/laradelfa" class="bg-white text-red-600 w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-100 transition duration-300">
+                                <a href="https://github.com/laradelfa" class="bg-white text-red-600 w-10 h-10 rounded-full flex items-centr justify-center hover:bg-gray-100 transition duration-300">
                                     <i class="fab fa-github"></i>
                                 </a>
                                 <a href="https://instagram.com/faaadelmr" class="bg-white text-red-600 w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-100 transition duration-300">
@@ -379,22 +621,20 @@
     <script>
         // Initialize fullPage.js
         new fullpage('#fullpage', {
-            //options here
             autoScrolling: true,
             scrollHorizontally: true,
             navigation: true,
             navigationPosition: 'right',
-            navigationTooltips: ['<span class="text-white">Beranda</span>', '<span class="text-black">Tentang</span>', '<span class="text-black">Proyek</span>', '<span class="text-black">Skill</span>', '<span class="text-white">Hubungi</span>'],
+            navigationTooltips: ['<span class="text-white">Beranda</span>', '<span class="text-black">Tentang</span>', '<span class="text-black">Proyek</span>', '<span class="text-black">Sertifikat</span>', '<span class="text-white">Hubungi</span>'],
             showActiveTooltip: true,
             scrollOverflow: true,
             scrollOverflowReset: true,
-            responsiveWidth: 768,
-            anchors: ['home', 'about', 'projects', 'skills', 'contact'],
+            responsiveWidth: 320, // FullPage.js is disabled on screens <= 768px
+            anchors: ['home', 'about', 'projects', 'certifications', 'contact'],
             menu: '#menu',
             css3: true,
             easingcss3: 'cubic-bezier(0.645, 0.045, 0.355, 1.000)',
             afterLoad: function(origin, destination, direction) {
-                // Add animations or triggers when a section is loaded
                 const section = destination.item;
                 const content = section.querySelector('.content-wrapper');
                 if (content) {
@@ -421,4 +661,3 @@
     <script src="main.js"></script>
 </body>
 </html>
-
