@@ -28,7 +28,7 @@
         .content-wrapper {
             max-height: 100vh;
             overflow-y: auto;
-            padding-top: 80px; /* For fixed navbar */
+            padding-top: 20px; /* For fixed navbar */
             padding-bottom: 2rem;
             scrollbar-width: none; /* Firefox */
         }
@@ -259,7 +259,7 @@
 
 
         <!-- Certifications Gallery Section -->
-        <div class="section bg-gray-50 py-16" data-anchor="certifications">
+        <div class="section bg-gray-100" data-anchor="certifications">
             <div class="content-wrapper">
                 <div class="container mx-auto px-4">
                     <h2 class="text-4xl font-extrabold mb-6 text-center text-gray-800">Galeri Sertifikat</h2>
@@ -296,20 +296,26 @@
         <script>
             // Certificate Data
             const certificates = [
-                { src: "asset/certificate1.webp", title: "Belajar Dasar Pemrograman Web", provider: "Dicoding Academy" },
-                { src: "asset/certificate2.webp", title: "Belajar Membuat Aplikasi Back-End", provider: "Dicoding Academy" },
-                { src: "asset/certificate3.webp", title: "Full-Stack Web Development", provider: "Udemy" },
-                { src: "asset/Screenshot.png", title: "JavaScript Algorithms and Data Structures", provider: "freeCodeCamp" },
-                { src: "asset/Screenshot.png", title: "Responsive Web Design", provider: "freeCodeCamp" },
-                { src: "asset/Screenshot.png", title: "Front-End Libraries", provider: "freeCodeCamp" },
-                { src: "asset/Screenshot.png", title: "Front-End Libraries", provider: "freeCodeCamp" },
-                { src: "asset/Screenshot.png", title: "Front-End Libraries", provider: "freeCodeCamp" },
-                { src: "asset/Screenshot.png", title: "Front-End Libraries", provider: "freeCodeCamp" },
-                // Anda dapat menambahkan lebih banyak sertifikat di sini
-            ];
+                { src: "sertifikat/Laravel Development.webp", title: "Laravel Development", provider: "SansBercode" },
+                { src: "sertifikat/Laravel 8x Fundamental.webp", title: "Laravel 8x Fundamenta", provider: "CODEPOLITAN" },
+                { src: "sertifikat/Pemrograman PHP.webp", title: "Pemrograman PHP", provider: "CODEPOLITAN" },
+                { src: "sertifikat/JavaScript Dasar.webp", title: "JavaScript Dasar", provider: "CODEPOLITAN" },
+                { src: "sertifikat/Python_Essentials_2_Fadel Muhamad Rifai_411221027.webp", title: "Python Essentials 2", provider: "Cisco Network Academy" },
+                { src: "sertifikat/Oracle DATABASE DESIGN Certificate Fadel Muhamad Rifai-411221027.webp", title: "Oracle DATABASE DESIGN", provider: "Oracle" },
+                { src: "sertifikat/ORACLE DATABASE PROGRAMMING WITH SQL.webp", title: "ORACLE DATABASE PROGRAMMING WITH SQL", provider: "Oracle" },
+                { src: "sertifikat/HTML dan CSS.webp", title: "HTML dan CSS", provider: "CODEPOLITAN" },
+                { src: "sertifikat/GIT untuk Pemula.webp", title: "GIT untuk Pemula", provider: "CODEPOLITAN" },
+                { src: "sertifikat/Fitur Baru Laravel 7.webp", title: "Fitur Baru Laravel 7", provider: "CODEPOLITAN" },
+                { src: "sertifikat/Konsep Dasar Pemrograman Berorientasi Objek di PHP .webp", title: "Konsep Dasar Pemrograman Berorientasi Objek di PHP", provider: "CODEPOLITAN" },
+                { src: "sertifikat/Laravel 6 Intermediate.webp", title: "Laravel 6 Intermediate", provider: "CODEPOLITAN" },
+                { src: "sertifikat/Mengenal Pemrograman Komputer.webp", title: "Mengenal Pemrograman Komputer", provider: "CODEPOLITAN" },
+                { src: "sertifikat/Menggunakan Bootstrap Framework.webp", title: "Menggunakan Bootstrap Framework", provider: "CODEPOLITAN" },
+                { src: "sertifikat/Penggunaan Database MySQL pada Pemrograman PHP.webp", title: "Penggunaan Database MySQL pada Pemrograman PHP", provider: "CODEPOLITAN" },
+                { src: "sertifikat/Python_Essentials_1_Fadel Muhamad Rifai_411221027.webp", title: "Python Essentials 1", provider: "Cisco Network Academy" },
+                ];
 
             // Carousel configuration
-            const itemsPerPage = window.innerWidth >= 768 ? 9 : 3; // Responsive items per page
+            const itemsPerPage = window.innerWidth >= 768 ? 6 : 3; // Responsive items per page
             let currentPage = 0;
             let totalPages = Math.ceil(certificates.length / itemsPerPage);
             let isAnimating = false; // Flag to prevent rapid pagination clicks
@@ -352,7 +358,7 @@
                 card.style.animationDelay = `${index * 0.1}s`; // Staggered animation
                 
                 card.innerHTML = `
-                    <div class="aspect-ratio-container" style="position: relative; padding-top: 56.25%;">
+                    <div class="aspect-ratio-container" style="position: relative; padding-top: 45.25%;">
                         <img src="${cert.src}" alt="${cert.title}" class="absolute top-0 left-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-110">
                     </div>
                     <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4">
@@ -514,30 +520,6 @@
                     totalPages = Math.ceil(certificates.length / newItemsPerPage);
                 }
                 renderGallery(false); // Don't animate on resize
-            });
-            
-            // Ensure gallery fits within the fullpage.js section
-            document.addEventListener('DOMContentLoaded', function() {
-                // If using fullpage.js, adjust the gallery to fit within the section
-                if (typeof fullpage !== 'undefined') {
-                    // This will be called when fullpage.js is ready
-                    const adjustGalleryHeight = () => {
-                        const section = document.querySelector('[data-anchor="certifications"]');
-                        const headerHeight = section.querySelector('h2').offsetHeight;
-                        const descHeight = section.querySelector('p').offsetHeight;
-                        const paginationHeight = 40; // Estimated height for pagination dots
-                        const padding = 80; // Account for section padding (16px)
-                        
-                        const availableHeight = section.offsetHeight - headerHeight - descHeight - paginationHeight - padding;
-                        
-                        // Adjust gallery height
-                        const galleryContainer = document.getElementById('certificate-gallery');
-                        galleryContainer.style.maxHeight = `${availableHeight}px`;
-                    };
-                    
-                    adjustGalleryHeight();
-                    window.addEventListener('resize', adjustGalleryHeight);
-                }
             });
             
             // Initial render
