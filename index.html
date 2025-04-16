@@ -10,89 +10,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.20/fullpage.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="preload" href="asset/pic1.webp" as="image" type="image/webp">
-    <style>
-        .gradient-bg {
-            background: linear-gradient(135deg, #e6342b 0%, #3d1d16 100%);
-        }
-        .card {
-            transition: all 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-        .section {
-            position: relative;
-            overflow: hidden;
-        }
-        .content-wrapper {
-            max-height: 100vh;
-            overflow-y: auto;
-            padding-top: 20px; /* For fixed navbar */
-            padding-bottom: 2rem;
-            scrollbar-width: none; /* Firefox */
-        }
-        .content-wrapper::-webkit-scrollbar {
-            display: none; /* Chrome, Safari, Edge */
-        }
-        #fp-nav ul li a span, 
-        .fp-slidesNav ul li a span {
-            background: #ff2d20;
-        }
-        .fp-watermark {
-            display: none !important;
-        }
-        /* Animations for certificate cards */
-        @keyframes fadeInUp {
-                from {
-                    opacity: 0;
-                    transform: translateY(20px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-            
-            @keyframes fadeOutDown {
-                from {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-                to {
-                    opacity: 0;
-                    transform: translateY(20px);
-                }
-            }
-            
-            .certificate-card {
-                animation: fadeInUp 0.5s ease forwards;
-            }
-            
-            .certificate-card.animate-out {
-                animation: fadeOutDown 0.3s ease forwards;
-            }
-            
-            /* Smooth transition for pagination dots */
-            .pagination-dot {
-                transition: background-color 0.3s ease, transform 0.3s ease;
-            }
-            
-            .pagination-dot.active {
-                transform: scale(1.2);
-            }
-            
-            /* Hover effect for navigation buttons */
-            #prev-btn:hover, #next-btn:hover {
-                transform: translateY(-50%) scale(1.1);
-            }
-    </style>
 </head>
 <body class="font-sans">
     <!-- FullPage.js Container -->
     <div id="fullpage">
         <!-- Home Section -->
-        <div class="section gradient-bg" data-anchor="home">
+        <div class="section background" data-anchor="home">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
             <div class="container mx-auto px-4 h-screen flex items-center justify-center">
             <div class="flex flex-col lg:flex-row items-center w-full max-w-7xl">
                 <div class="lg:w-1/2 mb-8 lg:mb-0 text-center lg:text-left px-4">
@@ -113,15 +39,19 @@
                     </a>
                 </div>
                 </div>
-                <div class="lg:w-1/2 flex justify-center px-4">
-                <img src="asset/pic1.webp"
-                     alt="Photo"
-                     class="rounded-full border-4 border-white shadow-xl h-48 w-48 sm:h-56 sm:w-56 md:h-64 md:w-64 object-cover"
-                     width="256"
-                     height="256"
-                     loading="eager"
-                     fetchpriority="high">
-                </div>
+                <div class="flex justify-center w-full px-4 py-4">
+                    <div class="relative overflow-hidden rounded-full border-4 border-white shadow-xl h-36 w-36 xs:h-40 xs:w-40 sm:h-48 sm:w-48 md:h-56 md:w-56 lg:h-64 lg:w-64">
+                      <img 
+                        src="asset/pic1.webp" 
+                        alt="Photo" 
+                        class="w-full h-full object-cover transition-all duration-500 ease-in-out hover:scale-210 hover:rotate-30"
+                        width="256" 
+                        height="256" 
+                        loading="eager" 
+                        fetchpriority="high"
+                      >
+                    </div>
+                  </div>                                               
             </div>
             </div>
         </div>
